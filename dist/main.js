@@ -86,14 +86,25 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/dom_node_collection.js":
+/*!************************************!*\
+  !*** ./src/dom_node_collection.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("class DOMNodeCollection {\n    constructor(eles) {\n        this.eles = eles;\n    }\n}\n\nmodule.exports = DOMNodeCollection\n\n//# sourceURL=webpack:///./src/dom_node_collection.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("window.$1 = function(arg) {\n    // debugger\n    // undercase document not uppercase/ also this.document to link current doc\n    // ^ results to querySelectorAll not function\n    this.document.querySelectorAll(arg);\n    // console.log(\"log\");\n};\n\n// module.exports = index.js \n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const DOMNodeCollection = __webpack_require__(/*! ./dom_node_collection */ \"./src/dom_node_collection.js\");\n\nwindow.$1 = function(arg) {\n    // debugger\n    // undercase document not uppercase/ also this.document to link current doc\n    // ^ results to querySelectorAll not function\n    const nodeList = this.document.querySelectorAll(arg);\n    // console.log(\"log\");\n    return this.Array.from(nodeList);\n};\n\n// module.exports = index.js \n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
