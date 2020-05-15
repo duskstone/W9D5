@@ -86,25 +86,14 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/dom_node_collection.js":
-/*!************************************!*\
-  !*** ./src/dom_node_collection.js ***!
-  \************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("class DOMNodeCollection {\n    constructor(nodes) {\n        this.nodes = nodes;\n    }\n\n    html(html) {\n        //checking if html is a string to be able to pass in empty string\n        if (typeof html === \"string\") {\n            this.nodes.forEach( node => {\n                node.innerHTML = html;\n            })\n        } else {\n            return this.nodes[0].innerHTML;\n        };\n    }\n\n    empty() {\n        this.html(\"\");\n    }\n\n    append(child) {\n        if (child instanceof Object && !(child instanceof DOMNodeCollection)) {\n            child = $1(child)\n        };\n        \n        if (child instanceof DOMNodeCollection) {\n            this.nodes.forEach(node => {\n                node.innerHTML += child.outerHTML;\n            });\n        } else {\n            this.nodes.forEach(node => {\n                node.innerHTML += child;\n            });\n        };\n    };\n\n    attr(atter, value){\n        if (value){\n            this.nodes.forEach(node => {\n                node[atter] = value;\n            });\n        } else {\n            return this.nodes[0][atter]\n        };\n    }\n\n    addClass(clss) {\n        this.nodes.forEach(node => {\n            node.className = clss;\n        });\n    }\n\n    removeClass() {\n        this.nodes.forEach(node => {\n            node.className = '';\n        });\n    }\n\n    // possibly need to go one key deeper\n    children() {\n        let childNodes = []\n        this.nodes.forEach(node => {\n           childNodes = childNodes.concat(Array.from(node.children));\n        });\n\n        return new DOMNodeCollection(childNodes);\n    }\n\n    // parent() {\n    //     //change .parent to .parentNode\n    //     let parentNodes = [];\n    //     this.nodes.forEach(node => {\n    //         parentNodes = parentNodes.concat(Array.from(node.parentNode));\n    //     });\n\n    //     return new DOMNodeCollection(parentNodes);\n    // }\n    \n    parent() {\n        \n        // this.nodes.forEach(node => {\n        //     if (parentNodes.includes(node.parentNode))\n        //         parentNodes.push(node.parentNode);\n        // });\n\n        return new DOMNodeCollection(this.nodes[0].parentNode);\n    }\n\n\n    find(selector) {\n        //finds the element based on the selector\n        let eles = [];\n        this.nodes.forEach(node => {\n            const ele = Array.from(node.querySelectorAll(selector))\n            eles.concat(ele)\n        });\n\n        return new DOMNodeCollection(eles);\n    }\n}\n\nmodule.exports = DOMNodeCollection\n\n//# sourceURL=webpack:///./src/dom_node_collection.js?");
-
-/***/ }),
-
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-eval("const DOMNodeCollection = __webpack_require__(/*! ./dom_node_collection */ \"./src/dom_node_collection.js\");\n\nwindow.$1 = function(arg) {\n    if (arg instanceof HTMLElement ) {\n        return new DOMNodeCollection([arg]);\n    } else { \n    // undercase document not uppercase/ also this.document to link current doc\n    // ^ results to querySelectorAll not function\n        const nodeList = document.querySelectorAll(arg);\n        // console.log(\"log\");\n        const nodes = Array.from(nodeList);\n        return new DOMNodeCollection(nodes);\n    };\n};\n\n// module.exports = index.js \n\n//# sourceURL=webpack:///./src/index.js?");
+eval("throw new Error(\"Module parse failed: Shorthand property assignments are valid only in destructuring patterns (36:15)\\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\\n| $1.ajax = function(options) {\\n|     let defaults = {\\n>         method = \\\"GET\\\",\\n|         url = \\\"http://127.0.0.1:5500/dist/index.html\\\",\\n|         contentType = 'application/x-www-form-urlencoded; charset=UTF-8',\");\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
