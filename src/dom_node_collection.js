@@ -63,7 +63,16 @@ class DOMNodeCollection {
             childNodes.push(node.children);
         });
 
-        return new DOMNodeCollection(childNodes)
+        return new DOMNodeCollection(childNodes);
+    }
+
+    parent(){
+    const parentNodes = []
+        this.nodes.forEach(node => {
+            parentNodes.push(node.parentNode);
+        });
+
+        return new DOMNodeCollection(parentNodes);
     }
     
 }
