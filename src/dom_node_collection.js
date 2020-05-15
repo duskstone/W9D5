@@ -34,11 +34,38 @@ class DOMNodeCollection {
         };
     };
 
+    attr(atter, value){
+        if (value){
+            this.nodes.forEach(node => {
+                node[atter] = value;
+            });
+        } else {
+            return this.nodes[0][atter]
+        };
+    }
+
     addClass(clss) {
         this.nodes.forEach(node => {
             node.className = clss;
         });
     }
+
+    removeClass() {
+        this.nodes.forEach(node => {
+            node.className = '';
+        });
+    }
+
+    // possibly need to go one key deeper
+    children(){
+        const childNodes = []
+        this.nodes.forEach(node => {
+            childNodes.push(node.children);
+        });
+
+        return new DOMNodeCollection(childNodes)
+    }
+    
 }
 
 module.exports = DOMNodeCollection
