@@ -89,13 +89,13 @@ class DOMNodeCollection {
 
     find(selector) {
         //finds the element based on the selector
-        let eles = [];
+        let findNode = [];
         this.nodes.forEach(node => {
-            const ele = Array.from(node.querySelectorAll(selector))
-            eles.concat(ele)
+            const nodeList = node.querySelectorAll(selector)
+            findNode = findNode.concat(Array.from(nodeList))
         });
 
-        return new DOMNodeCollection(eles);
+        return new DOMNodeCollection(findNode);
     }
 }
 
