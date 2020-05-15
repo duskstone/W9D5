@@ -34,6 +34,11 @@ class DOMNodeCollection {
         };
     };
 
+    addClass(clss) {
+        this.nodes.forEach(node => {
+            node.className = clss;
+        });
+    }
 }
 
 module.exports = DOMNodeCollection
