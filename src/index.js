@@ -2,7 +2,7 @@ window.$1 = function(arg) {
     // debugger
     // undercase document not uppercase/ also this.document to link current doc
     // ^ results to querySelectorAll not function
-    this.document.querySelectorAll(arg);
+    return this.document.querySelectorAll(arg);
     // console.log("log");
 };
 
