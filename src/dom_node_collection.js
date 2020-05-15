@@ -106,6 +106,25 @@ class DOMNodeCollection {
 
         return new DOMNodeCollection(this.nodes);
     }
+
+    on(event, callback) {
+        // debugger
+        this.attr("callback", callback);
+        this.nodes.forEach(node => {
+            node.addEventListener(event, this.attr("callback"));
+        });
+    }
+
+    off(event) {
+        // debugger
+        this.nodes.forEach(node => {
+            node.removeEventListener(event, this.attr("callback"));
+        });
+
+        // removeEventListener(event, this.nodes[0].callback);
+    }
+
+    
 }
 
 module.exports = DOMNodeCollection
