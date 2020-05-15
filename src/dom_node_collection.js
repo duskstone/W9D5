@@ -97,6 +97,15 @@ class DOMNodeCollection {
 
         return new DOMNodeCollection(findNode);
     }
+
+    remove() {
+        // let that = this;
+        this.nodes.forEach(node => {
+            node.parentNode.removeChild(node);
+        });
+
+        return new DOMNodeCollection(this.nodes);
+    }
 }
 
 module.exports = DOMNodeCollection
