@@ -66,16 +66,27 @@ class DOMNodeCollection {
         return new DOMNodeCollection(childNodes);
     }
 
-    parent() {
-        //change .parent to .parentNode
-        let parentNodes = [];
-        this.nodes.forEach(node => {
-            parentNodes = parentNodes.concat(Array.from(node.parentNode));
-        });
+    // parent() {
+    //     //change .parent to .parentNode
+    //     let parentNodes = [];
+    //     this.nodes.forEach(node => {
+    //         parentNodes = parentNodes.concat(Array.from(node.parentNode));
+    //     });
 
-        return new DOMNodeCollection(parentNodes);
-    }
+    //     return new DOMNodeCollection(parentNodes);
+    // }
     
+    parent() {
+        
+        // this.nodes.forEach(node => {
+        //     if (parentNodes.includes(node.parentNode))
+        //         parentNodes.push(node.parentNode);
+        // });
+
+        return new DOMNodeCollection(this.nodes[0].parentNode);
+    }
+
+
     find(selector) {
         //finds the element based on the selector
         let eles = [];
