@@ -6,9 +6,9 @@ window.$1 = function(arg) {
     } else { 
     // undercase document not uppercase/ also this.document to link current doc
     // ^ results to querySelectorAll not function
-        const nodeList = this.document.querySelectorAll(arg);
+        const nodeList = document.querySelectorAll(arg);
         // console.log("log");
-        const nodes = this.Array.from(nodeList);
+        const nodes = Array.from(nodeList);
         return new DOMNodeCollection(nodes);
     };
 };

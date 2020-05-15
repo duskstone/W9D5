@@ -57,24 +57,35 @@ class DOMNodeCollection {
     }
 
     // possibly need to go one key deeper
-    children(){
-        const childNodes = []
+    children() {
+        let childNodes = []
         this.nodes.forEach(node => {
-            childNodes.push(node.children);
+           childNodes = childNodes.concat(Array.from(node.children));
         });
 
         return new DOMNodeCollection(childNodes);
     }
 
-    parent(){
-    const parentNodes = []
+    parent() {
+        //change .parent to .parentNode
+        let parentNodes = [];
         this.nodes.forEach(node => {
-            parentNodes.push(node.parentNode);
+            parentNodes = parentNodes.concat(Array.from(node.parentNode));
         });
 
         return new DOMNodeCollection(parentNodes);
     }
     
+    find(selector) {
+        //finds the element based on the selector
+        let eles = [];
+        this.nodes.forEach(node => {
+            const ele = Array.from(node.querySelectorAll(selector))
+            eles.concat(ele)
+        });
+
+        return new DOMNodeCollection(eles);
+    }
 }
 
 module.exports = DOMNodeCollection
